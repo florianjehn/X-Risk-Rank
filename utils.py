@@ -44,10 +44,12 @@ def clean_author_names(author_list):
         if len(name.split()) == 1:
             continue
         try:
-            last_name = name.split()[0]
-            first_initial = name.split()[1][0]
-            cleaned = last_name + first_initial
-            cleaned = cleaned.lower().replace(' ', '')
+            # Split on first point to only have last name + first initial
+            temp_cleam = name.split(".")[0]
+            # Make everything lower case and the capitalize to make all the same
+            temp_clean = temp_cleam.lower().capitalize()
+            # Remove the empty spaces
+            cleaned = temp_clean.replace(' ', '')
         except AttributeError as e:
             print(e)
             print(f'Error: {name}')
